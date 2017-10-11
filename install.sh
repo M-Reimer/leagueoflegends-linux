@@ -27,6 +27,7 @@ echo "Creating League of Legends shell script"
 echo "*************************************************"
 
 echo "#!/bin/bash" > leagueoflegends.sh
+echo "export __GL_THREADED_OPTIMIZATIONS=1" >> leagueoflegends.sh
 echo "WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends WINEDEBUG=-all wine /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
