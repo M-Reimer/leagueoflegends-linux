@@ -16,7 +16,7 @@ WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine vc_redist.x86.exe
 echo "*************************************************"
 echo "Applying League of Legends wine prefix registry settings."
 echo "*************************************************"
-WINEDEBUG=-all WINEPREFIX=/home/$USER/Warframe wine regedit /S lol.reg
+WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine regedit /S lol.reg
 
 
 echo "*************************************************"
@@ -76,7 +76,7 @@ echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	echo "*************************************************"
-	echo "Creating warframe desktop shortcut."
+	echo "Creating League of Legends desktop shortcut."
 	echo "*************************************************"
 	cp /usr/share/applications/leagueoflegends.desktop /home/$USER/Desktop/
 fi
