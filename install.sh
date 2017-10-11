@@ -12,7 +12,7 @@ WINEDEBUG=-all WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends wine re
 
 
 echo "*************************************************"
-echo "Installing League of Legends."
+echo "Installing League of Legends. !!!Please do not launch the game!!!"
 echo "*************************************************"
 wget https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe
 
