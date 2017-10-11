@@ -3,20 +3,12 @@ echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
 echo "*************************************************"
 
-WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends winetricks -q directx9 d3dx9_43
-
-echo "*************************************************"
-echo "Installing Visual C++ 2015."
-echo "*************************************************"
-
-wget https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x86.exe
-
-WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine vc_redist.x86.exe /q
+WINEDEBUG=-all WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends winetricks -q directx9 d3dx9_43 winxp
 
 echo "*************************************************"
 echo "Applying League of Legends wine prefix registry settings."
 echo "*************************************************"
-WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine regedit /S lol.reg
+WINEDEBUG=-all WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends wine regedit /S lol.reg
 
 
 echo "*************************************************"
@@ -24,14 +16,14 @@ echo "Installing League of Legends."
 echo "*************************************************"
 wget https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe
 
-WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine League\ of\ Legends\ installer\ NA.exe
+WINEDEBUG=-all WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends wine League\ of\ Legends\ installer\ NA.exe
 
 echo "*************************************************"
 echo "Creating League of Legends shell script"
 echo "*************************************************"
 
 echo "#!/bin/bash" > leagueoflegends.sh
-echo "WINEPREFIX=/home/$USER/League\ of\ Legends WINEDEBUG=-all wine /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/LeagueClient.exe" >> leagueoflegends.sh
+echo "WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends WINEDEBUG=-all wine /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
 
@@ -54,7 +46,7 @@ then
 	echo "Creating League of Legends application menu shortcut."
 	echo "*************************************************"
 
-	sudo cp /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico /usr/share/pixmaps/
+	sudo cp /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/icon.ico /usr/share/pixmaps/
 
 	echo "[Desktop Entry]" > leagueoflegends.desktop
 	echo "Encoding=UTF-8" >> leagueoflegends.desktop
@@ -62,7 +54,7 @@ then
 	echo "GenericName=League of Legends" >> leagueoflegends.desktop
 	echo "League of Legends" >> leagueoflegends.desktop
 	echo "Exec=/usr/bin/leagueoflegends \"\$@\"" >> leagueoflegends.desktop
-	echo "Icon=/usr/share/pixmaps/lcu.ico" >> leagueoflegends.desktop
+	echo "Icon=/usr/share/pixmaps/icon.ico" >> leagueoflegends.desktop
 	echo "StartupNotify=true" >> leagueoflegends.desktop
 	echo "Terminal=false" >> leagueoflegends.desktop
 	echo "Type=Application" >> leagueoflegends.desktop

@@ -26,5 +26,5 @@ Option B: Without Lutris:
 ## Technical notes:  
 AMD users - using a gallium 9 build of wine with gallium 9 instead of CSMT will give you the best results.  
 You can do this by typing in terminal:  
-WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends winecfg  
+WINEARCH=win32 WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends winecfg  
 then go to the Staging tab, and check Gallium 9 at the bottom. Save and close.  
