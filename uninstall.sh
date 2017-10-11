@@ -25,9 +25,9 @@ echo "*************************************************"
 sudo rm -R /home/$USER/Desktop/leagueoflegends.desktop
 
 echo "*************************************************"
-echo "Removing home/$USER/League\ of\ Legends"
+echo "Removing home/$USER/League of Legends"
 echo "*************************************************"
-sudo rm -R home/$USER/League\ of\ Legends
+sudo rm -R /home/$USER/League\ of\ Legends
 
 echo "*************************************************"
 echo "League of Legends has been successfully removed."
