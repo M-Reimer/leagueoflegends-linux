@@ -22,7 +22,17 @@ Option B: Without Lutris:
     Applications>Games>League of Legends  
     League of Legends desktop shortcut  
     type "leagueoflegends" in a terminal  
+    ```  
 
+## Uninstallation/Removal Instructions
+This applies to non-lutris only: 
+
+    ```  
+    chmod a+x uninstall.sh  
+    ./uninstall.sh  
+    ``` 
+    
+    
 ## Technical notes:  
 AMD users - using a gallium 9 build of wine with gallium 9 instead of CSMT will give you the best results.  
 You can do this by typing in terminal:  
