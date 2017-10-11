@@ -8,7 +8,7 @@ Option A: Download Lutris and run my Lutris install script for League of Legends
 Option B: Without Lutris:  
 1. Install wine-staging 2.18 (or higher) for your linux distribution.  
 
-2. Download a copy of my League of Legends wine wrapper repo and extract it somewhere: [leagueoflegends-linux-master-linux-master](https://github.com/GloriousEggroll/leagueoflegends-linux/archive/master.zip)  
+2. Download a copy of my League of Legends wine wrapper repo and extract it somewhere: [leagueoflegends-linux-master](https://github.com/GloriousEggroll/leagueoflegends-linux/archive/master.zip)  
 
 3. Open the extracted folder in a terminal and:  
 
