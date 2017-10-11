@@ -19,6 +19,10 @@ wget https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/Leag
 WINEDEBUG=-all WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends wine League\ of\ Legends\ installer\ NA.exe
 
 echo "*************************************************"
+echo "The next few steps will prompt you for shortcut creations. If root is required, please enter your root password when prompted."
+echo "*************************************************"
+
+echo "*************************************************"
 echo "Creating League of Legends shell script"
 echo "*************************************************"
 
@@ -26,18 +30,10 @@ echo "#!/bin/bash" > leagueoflegends.sh
 echo "WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends WINEDEBUG=-all wine /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
-
-echo "*************************************************"
-echo "The next few steps will prompt you for shortcut creations. If root is required, please enter your root password when prompted."
-echo "*************************************************"
-
-echo "*************************************************"
-echo "Creating League of Legends shell script."
-echo "*************************************************"
 sudo cp leagueoflegends.sh /usr/bin/leagueoflegends
 
 
-read -p "Would you like a menu shortcut? " -n 1 -r
+read -p "Would you like a menu shortcut? y/n" -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -63,7 +59,7 @@ then
 	sudo cp leagueoflegends.desktop /usr/share/applications/
 fi
 
-read -p "Would you like a desktop shortcut? " -n 1 -r
+read -p "Would you like a desktop shortcut? y/n" -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
