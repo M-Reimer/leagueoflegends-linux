@@ -3,20 +3,24 @@ echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
 echo "*************************************************"
 
-WINEDEBUG=-all WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends winetricks -q directx9 d3dx9_43 winxp
+WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends winetricks -q winxp
 
 echo "*************************************************"
 echo "Applying League of Legends wine prefix registry settings."
 echo "*************************************************"
-WINEDEBUG=-all WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends wine regedit /S lol.reg
+WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine regedit /S lol.reg
 
 
 echo "*************************************************"
 echo "Installing League of Legends. !!!Please do not launch the game!!!"
 echo "*************************************************"
+
+mkdir -p '/home/$USER/League of Legends/drive_c/Riot Games/League of Legends/Config'
+echo -e '[General]\nx3d_platform=1' > '/home/$USER/League of Legends/drive_c/Riot Games/League of Legends/Config/game.cfg'
+      
 wget https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe
 
-WINEDEBUG=-all WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends wine League\ of\ Legends\ installer\ NA.exe
+WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine League\ of\ Legends\ installer\ NA.exe
 
 echo "*************************************************"
 echo "The next few steps will prompt you for shortcut creations. If root is required, please enter your root password when prompted."
@@ -28,6 +32,11 @@ echo "*************************************************"
 
 echo "#!/bin/bash" > leagueoflegends.sh
 echo "export __GL_THREADED_OPTIMIZATIONS=1" >> leagueoflegends.sh
+echo "export MESA_GL_VERSION_OVERRIDE=4.5COMPAT" >> leagueoflegends.sh
+echo "export MESA_GLSL_VERSION_OVERRIDE=450" >> leagueoflegends.sh
+echo "export MESA_GLTHREAD=TRUE" >> leagueoflegends.sh
+echo "export VBLANK_MODE=0" >> leagueoflegends.sh
+
 echo "WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends WINEDEBUG=-all wine /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
