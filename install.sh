@@ -15,8 +15,8 @@ echo "*************************************************"
 echo "Installing League of Legends. !!!Please do not launch the game!!!"
 echo "*************************************************"
 
-mkdir -p '/home/$USER/League of Legends/drive_c/Riot Games/League of Legends/Config'
-echo -e '[General]\nx3d_platform=1' > '/home/$USER/League of Legends/drive_c/Riot Games/League of Legends/Config/game.cfg'
+mkdir -p /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config
+echo -e '[General]\nx3d_platform=1' > /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config/game.cfg
       
 wget https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe
 
