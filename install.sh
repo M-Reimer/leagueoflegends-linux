@@ -37,7 +37,7 @@ echo "export MESA_GLSL_VERSION_OVERRIDE=450" >> leagueoflegends.sh
 echo "export MESA_GLTHREAD=TRUE" >> leagueoflegends.sh
 echo "export VBLANK_MODE=0" >> leagueoflegends.sh
 
-echo "WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends WINEDEBUG=-all wine /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
+echo "WINEPREFIX=/home/$USER/League\ of\ Legends WINEDEBUG=-all wine /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
 sudo cp leagueoflegends.sh /usr/bin/leagueoflegends
