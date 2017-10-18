@@ -1,5 +1,7 @@
 ## Installation Instructions
 
+Please be sure to install wine system dependencies. This can usually be achieved by installing wine on your system through your package manager. Additionally, these extra packages are necessary for wine to run LoL:  
+[League of Legends additional Dependencies](https://wiki.archlinux.org/index.php/League_of_Legends#Install_the_dependencies)
 
 Option A: Download Lutris and run my Lutris install script for League of Legends:  
 [Lutris 0.4.13](https://lutris.net/downloads/)  
@@ -31,10 +33,3 @@ This applies to non-lutris only:
     chmod a+x uninstall.sh  
     ./uninstall.sh  
     ``` 
-    
-    
-## Technical notes:  
-AMD users - using a gallium 9 build of wine with gallium 9 instead of CSMT will give you the best results.  
-You can do this by typing in terminal:  
-WINEARCH=win32 WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends winecfg  
-then go to the Staging tab, and check Gallium 9 at the bottom. Save and close.  
