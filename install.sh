@@ -33,8 +33,6 @@ echo "*************************************************"
 echo "#!/bin/bash" > leagueoflegends.sh
 echo "export __GL_THREADED_OPTIMIZATIONS=1" >> leagueoflegends.sh
 echo "export MESA_GL_VERSION_OVERRIDE=4.5COMPAT" >> leagueoflegends.sh
-echo "export MESA_GLSL_VERSION_OVERRIDE=450" >> leagueoflegends.sh
-echo "export MESA_GLTHREAD=TRUE" >> leagueoflegends.sh
 echo "export VBLANK_MODE=0" >> leagueoflegends.sh
 
 echo "WINEPREFIX=/home/$USER/League\ of\ Legends WINEDEBUG=-all wine /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
