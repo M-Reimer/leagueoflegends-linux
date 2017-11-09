@@ -14,13 +14,13 @@ WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine regedit /S lol.re
 echo "*************************************************"
 echo "Installing League of Legends. !!!Please do not launch the game!!!"
 echo "*************************************************"
-
-mkdir -p /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config
-echo -e '[General]\nx3d_platform=1' > /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config/game.cfg
       
 wget https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe
 
 WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine League\ of\ Legends\ installer\ NA.exe
+
+mkdir -p /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config
+echo -e '[General]\nx3d_platform=1' > /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config/game.cfg
 
 echo "*************************************************"
 echo "The next few steps will prompt you for shortcut creations. If root is required, please enter your root password when prompted."
@@ -50,7 +50,7 @@ then
 	echo "Creating League of Legends application menu shortcut."
 	echo "*************************************************"
 
-	sudo cp /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/icon.ico /usr/share/pixmaps/leagueoflegends.ico
+	sudo cp /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeaRADS/system/icon.ico /usr/share/pixmaps/leagueoflegends.ico
 
 	echo "[Desktop Entry]" > leagueoflegends.desktop
 	echo "Encoding=UTF-8" >> leagueoflegends.desktop
