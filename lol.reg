@@ -5,6 +5,3 @@ REGEDIT4
 
 [HKEY_CURRENT_USER\Software\Wine\DllOverrides]
 "msvcp140"="native,builtin"
-"msvcp120"="native,builtin"
-"vcomp120"="native,builtin"
-"atl120"="native,builtin"
