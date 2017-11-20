@@ -50,13 +50,12 @@ then
 	echo "Creating League of Legends application menu shortcut."
 	echo "*************************************************"
 
-	sudo cp /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeaRADS/system/icon.ico /usr/share/pixmaps/leagueoflegends.ico
+	sudo cp /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/icon.ico /usr/share/pixmaps/leagueoflegends.ico
 
 	echo "[Desktop Entry]" > leagueoflegends.desktop
 	echo "Encoding=UTF-8" >> leagueoflegends.desktop
 	echo "Name=League of Legends" >> leagueoflegends.desktop
 	echo "GenericName=League of Legends" >> leagueoflegends.desktop
-	echo "League of Legends" >> leagueoflegends.desktop
 	echo "Exec=/usr/bin/leagueoflegends \"\$@\"" >> leagueoflegends.desktop
 	echo "Icon=/usr/share/pixmaps/leagueoflegends.ico" >> leagueoflegends.desktop
 	echo "StartupNotify=true" >> leagueoflegends.desktop
