@@ -3,7 +3,7 @@ echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
 echo "*************************************************"
 
-WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends winetricks -q winxp
+WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends winetricks -q winxp directx9
 
 echo "*************************************************"
 echo "Applying League of Legends wine prefix registry settings."
@@ -20,7 +20,7 @@ wget https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/Leag
 WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine League\ of\ Legends\ installer\ NA.exe
 
 mkdir -p /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config
-echo -e '[General]\nx3d_platform=1' > /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config/game.cfg
+echo -e '[General]\nWindowMode=2' > /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config/game.cfg
 
 echo "*************************************************"
 echo "The next few steps will prompt you for shortcut creations. If root is required, please enter your root password when prompted."
