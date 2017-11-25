@@ -31,7 +31,6 @@ echo "Creating League of Legends shell script"
 echo "*************************************************"
 
 echo "#!/bin/bash" > leagueoflegends.sh
-echo "export MESA_GL_VERSION_OVERRIDE=4.5COMPAT" >> leagueoflegends.sh
 echo "export __GL_THREADED_OPTIMIZATIONS=1" >> leagueoflegends.sh
 echo "export VBLANK_MODE=0" >> leagueoflegends.sh
 
