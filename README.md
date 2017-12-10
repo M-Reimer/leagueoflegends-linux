@@ -6,6 +6,8 @@ Please be sure to install wine system dependencies. This can usually be achieved
 Additional help can be found here:
 [How to get out of Wine Dependency Hell](https://www.gloriouseggroll.tv/how-to-get-out-of-wine-dependency-hell/)
 
+If you are on nvidia you will also need lib32-nvidia-utils on Arch.
+
 Option A: Download Lutris and run my Lutris install script for League of Legends:  
 [Lutris 0.4.13](https://lutris.net/downloads/)  
 [League of Legends Install Script for Lutris](https://lutris.net/games/league-of-legends/)  
