@@ -11,7 +11,7 @@ echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
 echo "*************************************************"
 
-winetricks -q winxp directx9 d3dx9_41 d3dx9_42 d3dx9_43
+winetricks -q winxp directx9
 
 echo "*************************************************"
 echo "Applying League of Legends wine prefix registry settings."
@@ -26,9 +26,6 @@ echo "*************************************************"
 wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe'
 
 wine 'League of Legends installer NA.exe'
-
-mkdir -p "$WINEPREFIX/drive_c/Riot Games/League of Legends/Config"
-echo -e '[General]\nWindowMode=2' > "$WINEPREFIX/drive_c/Riot Games/League of Legends/Config/game.cfg"
 
 echo "*************************************************"
 echo "The next few steps will prompt you for shortcut creations."
