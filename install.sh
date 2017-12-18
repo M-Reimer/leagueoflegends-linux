@@ -1,14 +1,20 @@
 #!/bin/bash
+# Some global WINE configuration variable exports.
+# Feel free to change the WINEPREFIX but keep the others intact!
+export WINEARCH=win32
+export WINEDEBUG=-all
+export WINEPREFIX="$HOME/League of Legends"
+
 echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
 echo "*************************************************"
 
-WINEARCH=win32 WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends winetricks -q winxp directx9 d3dx9_41 d3dx9_42 d3dx9_43
+winetricks -q winxp directx9 d3dx9_41 d3dx9_42 d3dx9_43
 
 echo "*************************************************"
 echo "Applying League of Legends wine prefix registry settings."
 echo "*************************************************"
-WINEARCH=win32 WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine regedit /S lol.reg
+wine regedit /S lol.reg
 
 
 echo "*************************************************"
@@ -17,10 +23,10 @@ echo "*************************************************"
       
 wget https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe
 
-WINEARCH=win32 WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine League\ of\ Legends\ installer\ NA.exe
+wine League\ of\ Legends\ installer\ NA.exe
 
-mkdir -p /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config
-echo -e '[General]\nWindowMode=2' > /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config/game.cfg
+mkdir -p $WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/Config
+echo -e '[General]\nWindowMode=2' > $WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/Config/game.cfg
 
 echo "*************************************************"
 echo "The next few steps will prompt you for shortcut creations. If root is required, please enter your root password when prompted."
@@ -33,7 +39,7 @@ echo "*************************************************"
 echo "#!/bin/bash" > leagueoflegends.sh
 echo "export __GL_THREADED_OPTIMIZATIONS=1" >> leagueoflegends.sh
 
-echo "WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends WINEDEBUG=-all wine /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
+echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all wine C:/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
 sudo cp leagueoflegends.sh /usr/bin/leagueoflegends
@@ -48,7 +54,7 @@ then
 	echo "Creating League of Legends application menu shortcut."
 	echo "*************************************************"
 
-	sudo cp /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico /usr/share/pixmaps/leagueoflegends.ico
+	sudo cp $WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico /usr/share/pixmaps/leagueoflegends.ico
 
 	echo "[Desktop Entry]" > leagueoflegends.desktop
 	echo "Encoding=UTF-8" >> leagueoflegends.desktop
