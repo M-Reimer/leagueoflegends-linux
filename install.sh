@@ -1,67 +1,76 @@
 #!/bin/bash
+# Some global WINE configuration variable exports.
+# WINEPREFIX can be passed via environment to override the default.
+# To do this, run this script with "WINEPREFIX=..." in front of the command:
+# $ WINEPREFIX=$HOME/.wineprefix/LoL ./install.sh
+export WINEARCH=win32
+export WINEDEBUG=-all
+export WINEPREFIX=${WINEPREFIX:-"$HOME/League of Legends"}
+
 echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
 echo "*************************************************"
 
-WINEARCH=win32 WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends winetricks -q winxp directx9 d3dx9_41 d3dx9_42 d3dx9_43
+winetricks -q winxp directx9 d3dx9_41 d3dx9_42 d3dx9_43
 
 echo "*************************************************"
 echo "Applying League of Legends wine prefix registry settings."
 echo "*************************************************"
-WINEARCH=win32 WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine regedit /S lol.reg
+wine regedit /S lol.reg
 
 
 echo "*************************************************"
 echo "Installing League of Legends. !!!Please do not launch the game!!!"
 echo "*************************************************"
       
-wget https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe
+wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe'
 
-WINEARCH=win32 WINEDEBUG=-all WINEPREFIX=/home/$USER/League\ of\ Legends wine League\ of\ Legends\ installer\ NA.exe
+wine 'League of Legends installer NA.exe'
 
-mkdir -p /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config
-echo -e '[General]\nWindowMode=2' > /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/Config/game.cfg
+mkdir -p "$WINEPREFIX/drive_c/Riot Games/League of Legends/Config"
+echo -e '[General]\nWindowMode=2' > "$WINEPREFIX/drive_c/Riot Games/League of Legends/Config/game.cfg"
 
 echo "*************************************************"
-echo "The next few steps will prompt you for shortcut creations. If root is required, please enter your root password when prompted."
+echo "The next few steps will prompt you for shortcut creations."
 echo "*************************************************"
 
 echo "*************************************************"
 echo "Creating League of Legends shell script"
 echo "*************************************************"
 
+# This is the "user local" BIN-directory for many distributions
+mkdir -p "$HOME/bin"
+
 echo "#!/bin/bash" > leagueoflegends.sh
 echo "export __GL_THREADED_OPTIMIZATIONS=1" >> leagueoflegends.sh
 
-echo "WINEARCH=win32 WINEPREFIX=/home/$USER/League\ of\ Legends WINEDEBUG=-all wine /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
+echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all wine \"C:/Riot Games/League of Legends/LeagueClient.exe\"" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
-sudo cp leagueoflegends.sh /usr/bin/leagueoflegends
+cp leagueoflegends.sh "$HOME/bin/leagueoflegends"
 
 
 read -p "Would you like a menu shortcut? y/n" -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-
 	echo "*************************************************"
 	echo "Creating League of Legends application menu shortcut."
 	echo "*************************************************"
-
-	sudo cp /home/$USER/League\ of\ Legends/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico /usr/share/pixmaps/leagueoflegends.ico
 
 	echo "[Desktop Entry]" > leagueoflegends.desktop
 	echo "Encoding=UTF-8" >> leagueoflegends.desktop
 	echo "Name=League of Legends" >> leagueoflegends.desktop
 	echo "GenericName=League of Legends" >> leagueoflegends.desktop
-	echo "Exec=/usr/bin/leagueoflegends \"\$@\"" >> leagueoflegends.desktop
-	echo "Icon=/usr/share/pixmaps/leagueoflegends.ico" >> leagueoflegends.desktop
+	echo "Exec=$HOME/bin/leagueoflegends \"\$@\"" >> leagueoflegends.desktop
+	echo "Icon=$WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico /usr/share/pixmaps/leagueoflegends.ico" >> leagueoflegends.desktop
 	echo "StartupNotify=true" >> leagueoflegends.desktop
 	echo "Terminal=false" >> leagueoflegends.desktop
 	echo "Type=Application" >> leagueoflegends.desktop
 	echo "Categories=Application;Game" >> leagueoflegends.desktop
 
-	sudo cp leagueoflegends.desktop /usr/share/applications/
+	cp leagueoflegends.desktop "$HOME/.local/share/applications/"
+	update-desktop-database "$HOME/.local/share/applications"
 fi
 
 read -p "Would you like a desktop shortcut? y/n" -n 1 -r
@@ -71,7 +80,7 @@ then
 	echo "*************************************************"
 	echo "Creating League of Legends desktop shortcut."
 	echo "*************************************************"
-	cp /usr/share/applications/leagueoflegends.desktop /home/$USER/Desktop/
+	cp leagueoflegends.desktop "$HOME/Desktop/"
 fi
 
 
