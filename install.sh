@@ -1,9 +1,11 @@
 #!/bin/bash
 # Some global WINE configuration variable exports.
-# Feel free to change the WINEPREFIX but keep the others intact!
+# WINEPREFIX can be passed via environment to override the default.
+# To do this, run this script with "WINEPREFIX=..." in front of the command:
+# $ WINEPREFIX=$HOME/.wineprefix/LoL ./install.sh
 export WINEARCH=win32
 export WINEDEBUG=-all
-export WINEPREFIX="$HOME/League of Legends"
+export WINEPREFIX=${WINEPREFIX:-"$HOME/League of Legends"}
 
 echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
