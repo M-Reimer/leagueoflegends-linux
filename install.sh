@@ -23,12 +23,12 @@ echo "*************************************************"
 echo "Installing League of Legends. !!!Please do not launch the game!!!"
 echo "*************************************************"
       
-wget https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe
+wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe'
 
-wine League\ of\ Legends\ installer\ NA.exe
+wine 'League of Legends installer NA.exe'
 
-mkdir -p $WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/Config
-echo -e '[General]\nWindowMode=2' > $WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/Config/game.cfg
+mkdir -p "$WINEPREFIX/drive_c/Riot Games/League of Legends/Config"
+echo -e '[General]\nWindowMode=2' > "$WINEPREFIX/drive_c/Riot Games/League of Legends/Config/game.cfg"
 
 echo "*************************************************"
 echo "The next few steps will prompt you for shortcut creations."
@@ -39,15 +39,15 @@ echo "Creating League of Legends shell script"
 echo "*************************************************"
 
 # This is the "user local" BIN-directory for many distributions
-mkdir -p $HOME/bin
+mkdir -p "$HOME/bin"
 
 echo "#!/bin/bash" > leagueoflegends.sh
 echo "export __GL_THREADED_OPTIMIZATIONS=1" >> leagueoflegends.sh
 
-echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all wine C:/Riot\ Games/League\ of\ Legends/LeagueClient.exe" >> leagueoflegends.sh
+echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all wine \"C:/Riot Games/League of Legends/LeagueClient.exe\"" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
-cp leagueoflegends.sh $HOME/bin/leagueoflegends
+cp leagueoflegends.sh "$HOME/bin/leagueoflegends"
 
 
 read -p "Would you like a menu shortcut? y/n" -n 1 -r
@@ -69,8 +69,8 @@ then
 	echo "Type=Application" >> leagueoflegends.desktop
 	echo "Categories=Application;Game" >> leagueoflegends.desktop
 
-	cp leagueoflegends.desktop $HOME/.local/share/applications/
-	update-desktop-database $HOME/.local/share/applications
+	cp leagueoflegends.desktop "$HOME/.local/share/applications/"
+	update-desktop-database "$HOME/.local/share/applications"
 fi
 
 read -p "Would you like a desktop shortcut? y/n" -n 1 -r
@@ -80,7 +80,7 @@ then
 	echo "*************************************************"
 	echo "Creating League of Legends desktop shortcut."
 	echo "*************************************************"
-	cp leagueoflegends.desktop $HOME/Desktop/
+	cp leagueoflegends.desktop "$HOME/Desktop/"
 fi
 
 
