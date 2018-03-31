@@ -11,7 +11,7 @@ echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
 echo "*************************************************"
 
-winetricks -q winxp directx9
+winetricks -q winxp d3dx9
 
 echo "*************************************************"
 echo "Applying League of Legends wine prefix registry settings."
