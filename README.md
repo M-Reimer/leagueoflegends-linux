@@ -1,3 +1,8 @@
+## This method no longer works. League of Legends no longer runs on linux as of the June 2018 patch. See for details: 
+https://www.reddit.com/r/linux_gaming/comments/8rjode/league_of_legends_to_end_all_forms_of_linux/
+
+I'm keeping this github up in the event that they fix it to work with wine again.
+
 ## Installation Instructions
 
 Please be sure to install wine system dependencies. This can usually be achieved by installing wine on your system through your package manager. Additionally, these extra packages are necessary for wine to run LoL:  
