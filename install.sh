@@ -25,7 +25,11 @@ echo "*************************************************"
 
 wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe'
 
-wine 'League of Legends installer NA.exe'
+/opt/wine-lol/bin/wine 'League of Legends installer NA.exe'
+
+# TODO: The installer will create shortcuts (or better wine will create them)
+#       - Locate these .desktop files
+#       - Delete them
 
 echo "*************************************************"
 echo "The next few steps will prompt you for shortcut creations."
@@ -44,7 +48,7 @@ echo "export MESA_GLTHREAD=TRUE" >> leagueoflegends.sh
 echo "export GPU_MAX_HEAP_SIZE=100" >> leagueoflegends.sh
 echo "export GPU_MAX_ALLOC_PERCENT=100" >> leagueoflegends.sh
 
-echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all wine \"C:/Riot Games/League of Legends/LeagueClient.exe\"" >> leagueoflegends.sh
+echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all /opt/wine-lol/bin/wine \"C:/Riot Games/League of Legends/LeagueClient.exe\"" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
 cp leagueoflegends.sh "$HOME/bin/leagueoflegends"
