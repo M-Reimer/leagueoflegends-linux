@@ -5,7 +5,9 @@
 # $ WINEPREFIX=$HOME/.wineprefix/LoL ./install.sh
 export WINEARCH=win32
 export WINEDEBUG=-all
-export WINEPREFIX=${WINEPREFIX:-"$HOME/League of Legends"}
+export WINEPREFIX=${WINEPREFIX:-"$HOME/.wineprefix/LoL"}
+
+mkdir -p "$WINEPREFIX"
 
 echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
