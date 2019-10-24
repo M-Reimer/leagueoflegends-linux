@@ -67,7 +67,7 @@ then
 	echo "Name=League of Legends" >> leagueoflegends.desktop
 	echo "GenericName=League of Legends" >> leagueoflegends.desktop
 	echo "Exec=$HOME/bin/leagueoflegends \"\$@\"" >> leagueoflegends.desktop
-	echo "Icon=$WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico /usr/share/pixmaps/leagueoflegends.ico" >> leagueoflegends.desktop
+	echo "Icon=$WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico" >> leagueoflegends.desktop
 	echo "StartupNotify=true" >> leagueoflegends.desktop
 	echo "Terminal=false" >> leagueoflegends.desktop
 	echo "Type=Application" >> leagueoflegends.desktop
