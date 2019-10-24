@@ -11,7 +11,7 @@ echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
 echo "*************************************************"
 
-winetricks -q winxp d3dx9
+winetricks -q d3dx9
 
 echo "*************************************************"
 echo "Applying League of Legends wine prefix registry settings."
@@ -22,7 +22,7 @@ wine regedit /S lol.reg
 echo "*************************************************"
 echo "Installing League of Legends. !!!Please do not launch the game!!!"
 echo "*************************************************"
-      
+
 wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe'
 
 wine 'League of Legends installer NA.exe'
