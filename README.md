@@ -7,7 +7,6 @@
 3. Open the extracted folder in a terminal and:
 
     ```
-    chmod a+x install.sh
     ./install.sh
     ```
 4. Launch the game via any of the following methods:
@@ -22,6 +21,5 @@
 This applies to non-lutris only:
 
     ```
-    chmod a+x uninstall.sh
     ./uninstall.sh
     ```
