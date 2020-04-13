@@ -31,13 +31,11 @@ echo "[2] Europe West "
 # FIXME: Add more regions?
 echo "Select an option -> "
 read op
-if [$op == 1]
-then
+if [ $op == 1 ]; then
 	wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe'
 	/opt/wine-lol/bin/wine 'League of Legends installer NA.exe'
 fi
-elif[$op ==2]
-then 
+elif[ $op == 2 ]; then 
 		wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20EUW.exe'
 		/opt/wine-lol/bin/wine 'League of Legends installer EUW.exe'
 fi
