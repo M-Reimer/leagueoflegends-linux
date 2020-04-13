@@ -25,9 +25,24 @@ echo "*************************************************"
 echo "Installing League of Legends. !!!Please do not launch the game!!!"
 echo "*************************************************"
 
-wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe'
+echo "Select your region: "
+echo "[1] North America"
+echo "[2] Europe West "
+# FIXME: Add more regions?
+echo "Select an option -> "
+read op
+if [$op == 1]
+then
+	wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe'
+	/opt/wine-lol/bin/wine 'League of Legends installer NA.exe'
+fi
+elif[$op ==2]
+then 
+		wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20EUW.exe'
+		/opt/wine-lol/bin/wine 'League of Legends installer EUW.exe'
+fi
 
-/opt/wine-lol/bin/wine 'League of Legends installer NA.exe'
+
 
 # TODO: The installer will create shortcuts (or better wine will create them)
 #       - Locate these .desktop files
