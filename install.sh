@@ -38,6 +38,9 @@ fi
 elif[ $op == 2 ]; then 
 		wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20EUW.exe'
 		/opt/wine-lol/bin/wine 'League of Legends installer EUW.exe'
+else
+	echo "wrong option" 
+
 fi
 
 
