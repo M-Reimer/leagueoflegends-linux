@@ -22,7 +22,7 @@ wine regedit /S lol.reg
 echo "*************************************************"
 echo "Installing League of Legends. !!!Please do not launch the game!!!"
 echo "*************************************************"
-      
+
 wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe'
 
 wine 'League of Legends installer NA.exe'
@@ -80,7 +80,8 @@ then
 	echo "*************************************************"
 	echo "Creating League of Legends desktop shortcut."
 	echo "*************************************************"
-	cp leagueoflegends.desktop "$HOME/Desktop/"
+	DESKTOP_PATH=$(xdg-user-dir DESKTOP 2>/dev/null || echo "$HOME/Desktop")
+	cp leagueoflegends.desktop "$DESKTOP_PATH"
 fi
 
 
