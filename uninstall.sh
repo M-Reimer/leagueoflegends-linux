@@ -11,12 +11,13 @@ rm $HOME/bin/leagueoflegends
 echo "*************************************************"
 echo "Removing $HOME/.local/share/applications/leagueoflegends.desktop"
 echo "*************************************************"
-rm $HOME/.local/share/applications/leagueoflegends.desktop
+xdg-desktop-menu uninstall leagueoflegends.desktop
 
 echo "*************************************************"
 echo "Removing $HOME/Desktop/leagueoflegends.desktop"
 echo "*************************************************"
-rm $HOME/Desktop/leagueoflegends.desktop
+xdg-desktop-icon uninstall leagueoflegends.desktop
+
 
 echo "*************************************************"
 echo "Removing $HOME/.wineprefix/LoL"

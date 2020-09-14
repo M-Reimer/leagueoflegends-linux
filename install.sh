@@ -75,8 +75,7 @@ then
 	echo "Type=Application" >> leagueoflegends.desktop
 	echo "Categories=Application;Game" >> leagueoflegends.desktop
 
-	cp leagueoflegends.desktop "$HOME/.local/share/applications/"
-	update-desktop-database "$HOME/.local/share/applications"
+	xdg-desktop-menu instal --novendor leagueoflegends.desktop
 fi
 
 read -p "Would you like a desktop shortcut? y/n" -n 1 -r
@@ -86,7 +85,7 @@ then
 	echo "*************************************************"
 	echo "Creating League of Legends desktop shortcut."
 	echo "*************************************************"
-	cp leagueoflegends.desktop "$HOME/Desktop/"
+	xdg-desktop-icon instal --novendor leagueoflegends.desktop
 fi
 
 
