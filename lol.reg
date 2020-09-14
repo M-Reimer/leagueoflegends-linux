@@ -1,10 +1,9 @@
 REGEDIT4
 
-[HKEY_CURRENT_USER\Software\Wine\DllRedirects]
-"wined3d"="wined3d-csmt.dll"
-
-[HKEY_CURRENT_USER\Software\Wine\DllOverrides]
-"msvcp140"="native,builtin"
-"msvcp120"="native,builtin"
-"vcomp120"="native,builtin"
-"atl120"="native,builtin" 
+[HKEY_CURRENT_USER\Software\Wine\Direct3D]
+"UseGLSL"="disabled"
+[HKEY_CURRENT_USER\Software\Wine\DirectInput]
+"MouseWarpOverride"="enable"
+[HKEY_CURRENT_USER\Software\Wine\X11 Driver]
+"GrabFullScreen"="Y"
+"UseXVidMode"="N"

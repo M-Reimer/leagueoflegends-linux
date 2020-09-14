@@ -5,13 +5,15 @@
 # $ WINEPREFIX=$HOME/.wineprefix/LoL ./install.sh
 export WINEARCH=win32
 export WINEDEBUG=-all
-export WINEPREFIX=${WINEPREFIX:-"$HOME/League of Legends"}
+export WINEPREFIX=${WINEPREFIX:-"$HOME/.wineprefix/LoL"}
+
+mkdir -p "$WINEPREFIX"
 
 echo "*************************************************"
 echo "Creating wine prefix and performing winetricks."
 echo "*************************************************"
 
-winetricks -q winxp directx9 d3dx9_41 d3dx9_42 d3dx9_43
+winetricks -q d3dx9
 
 echo "*************************************************"
 echo "Applying League of Legends wine prefix registry settings."
@@ -25,10 +27,11 @@ echo "*************************************************"
 
 wget 'https://riotgamespatcher-a.akamaihd.net/releases/live/installer/deploy/League%20of%20Legends%20installer%20NA.exe'
 
-wine 'League of Legends installer NA.exe'
+/opt/wine-lol/bin/wine 'League of Legends installer NA.exe'
 
-mkdir -p "$WINEPREFIX/drive_c/Riot Games/League of Legends/Config"
-echo -e '[General]\nWindowMode=2' > "$WINEPREFIX/drive_c/Riot Games/League of Legends/Config/game.cfg"
+# TODO: The installer will create shortcuts (or better wine will create them)
+#       - Locate these .desktop files
+#       - Delete them
 
 echo "*************************************************"
 echo "The next few steps will prompt you for shortcut creations."
@@ -43,8 +46,11 @@ mkdir -p "$HOME/bin"
 
 echo "#!/bin/bash" > leagueoflegends.sh
 echo "export __GL_THREADED_OPTIMIZATIONS=1" >> leagueoflegends.sh
+echo "export MESA_GLTHREAD=TRUE" >> leagueoflegends.sh
+echo "export GPU_MAX_HEAP_SIZE=100" >> leagueoflegends.sh
+echo "export GPU_MAX_ALLOC_PERCENT=100" >> leagueoflegends.sh
 
-echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all wine \"C:/Riot Games/League of Legends/LeagueClient.exe\"" >> leagueoflegends.sh
+echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all /opt/wine-lol/bin/wine \"C:/Riot Games/League of Legends/LeagueClient.exe\"" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
 cp leagueoflegends.sh "$HOME/bin/leagueoflegends"
@@ -63,7 +69,7 @@ then
 	echo "Name=League of Legends" >> leagueoflegends.desktop
 	echo "GenericName=League of Legends" >> leagueoflegends.desktop
 	echo "Exec=$HOME/bin/leagueoflegends \"\$@\"" >> leagueoflegends.desktop
-	echo "Icon=$WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico /usr/share/pixmaps/leagueoflegends.ico" >> leagueoflegends.desktop
+	echo "Icon=$WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico" >> leagueoflegends.desktop
 	echo "StartupNotify=true" >> leagueoflegends.desktop
 	echo "Terminal=false" >> leagueoflegends.desktop
 	echo "Type=Application" >> leagueoflegends.desktop
