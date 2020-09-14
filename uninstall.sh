@@ -16,7 +16,8 @@ rm $HOME/.local/share/applications/leagueoflegends.desktop
 echo "*************************************************"
 echo "Removing $HOME/Desktop/leagueoflegends.desktop"
 echo "*************************************************"
-rm $HOME/Desktop/leagueoflegends.desktop
+DESKTOP_PATH=$(xdg-user-dir DESKTOP 2>/dev/null || echo "$HOME/Desktop")
+rm "$DESKTOP_PATH/leagueoflegends.desktop"
 
 echo "*************************************************"
 echo "Removing $HOME/.wineprefix/LoL"
