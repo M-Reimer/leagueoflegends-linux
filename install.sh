@@ -41,6 +41,9 @@ echo "*************************************************"
 echo "Creating League of Legends shell script"
 echo "*************************************************"
 
+# copy icon to $HOME/.local/share/icons/
+cp $WINEPREFIX/drive_c/ProgramData/Riot\ Games/Metadata/league_of_legends.live/league_of_legends.live.ico $HOME/.local/share/icons/lol.ico
+
 # This is the "user local" BIN-directory for many distributions
 mkdir -p "$HOME/bin"
 
@@ -64,7 +67,7 @@ echo "Encoding=UTF-8" >> leagueoflegends.desktop
 echo "Name=League of Legends" >> leagueoflegends.desktop
 echo "GenericName=League of Legends" >> leagueoflegends.desktop
 echo "Exec=$HOME/bin/leagueoflegends \"\$@\"" >> leagueoflegends.desktop
-echo "Icon=$WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico" >> leagueoflegends.desktop
+echo "Icon=$HOME/.local/share/icons/lol.ico" >> leagueoflegends.desktop
 echo "StartupNotify=true" >> leagueoflegends.desktop
 echo "Terminal=false" >> leagueoflegends.desktop
 echo "Type=Application" >> leagueoflegends.desktop
