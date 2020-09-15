@@ -69,6 +69,7 @@ echo "StartupNotify=true" >> leagueoflegends.desktop
 echo "Terminal=false" >> leagueoflegends.desktop
 echo "Type=Application" >> leagueoflegends.desktop
 echo "Categories=Application;Game" >> leagueoflegends.desktop
+echo "StartupWMClass=leagueclientux.exe" >> leagueoflegends.desktop
 
 
 read -p "Would you like a menu shortcut? y/n" -n 1 -r
