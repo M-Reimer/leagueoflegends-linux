@@ -56,23 +56,24 @@ echo "export GPU_MAX_ALLOC_PERCENT=100" >> leagueoflegends.sh
 echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all /opt/wine-lol/bin/wine \"C:/Riot Games/League of Legends/LeagueClient.exe\"" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
+chmod a+x launchhelper.sh
 cp leagueoflegends.sh "$HOME/bin/leagueoflegends"
+cp launchhelper.sh "$HOME/bin/launchhelper"
 
 echo "*************************************************"
 echo "Generating League of Legends .desktop file"
 echo "*************************************************"
 
-echo "[Desktop Entry]" > leagueoflegends.desktop
-echo "Encoding=UTF-8" >> leagueoflegends.desktop
-echo "Name=League of Legends" >> leagueoflegends.desktop
-echo "GenericName=League of Legends" >> leagueoflegends.desktop
-echo "Exec=$HOME/bin/leagueoflegends \"\$@\"" >> leagueoflegends.desktop
-echo "Icon=$HOME/.local/share/icons/lol.ico" >> leagueoflegends.desktop
-echo "StartupNotify=true" >> leagueoflegends.desktop
-echo "Terminal=false" >> leagueoflegends.desktop
-echo "Type=Application" >> leagueoflegends.desktop
-echo "Categories=Application;Game" >> leagueoflegends.desktop
-echo "StartupWMClass=leagueclientux.exe" >> leagueoflegends.desktop
+	echo "[Desktop Entry]" > leagueoflegends.desktop
+	echo "Encoding=UTF-8" >> leagueoflegends.desktop
+	echo "Name=League of Legends" >> leagueoflegends.desktop
+	echo "GenericName=League of Legends" >> leagueoflegends.desktop
+	echo "Exec=sh -c "$HOME/bin/launchhelper & $HOME/bin/leagueoflegends \"\$@\""" >> leagueoflegends.desktop
+	echo "Icon=$WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico" >> leagueoflegends.desktop
+	echo "StartupNotify=true" >> leagueoflegends.desktop
+	echo "Terminal=false" >> leagueoflegends.desktop
+	echo "Type=Application" >> leagueoflegends.desktop
+	echo "Categories=Application;Game" >> leagueoflegends.desktop
 
 
 read -p "Would you like a menu shortcut? y/n" -n 1 -r
@@ -82,16 +83,6 @@ then
 	echo "*************************************************"
 	echo "Creating League of Legends application menu shortcut."
 	echo "*************************************************"
-	echo "[Desktop Entry]" > leagueoflegends.desktop
-	echo "Encoding=UTF-8" >> leagueoflegends.desktop
-	echo "Name=League of Legends" >> leagueoflegends.desktop
-	echo "GenericName=League of Legends" >> leagueoflegends.desktop
-	echo "Exec=$HOME/bin/leagueoflegends \"\$@\"" >> leagueoflegends.desktop
-	echo "Icon=$WINEPREFIX/drive_c/Riot\ Games/League\ of\ Legends/RADS/system/lcu.ico" >> leagueoflegends.desktop
-	echo "StartupNotify=true" >> leagueoflegends.desktop
-	echo "Terminal=false" >> leagueoflegends.desktop
-	echo "Type=Application" >> leagueoflegends.desktop
-	echo "Categories=Application;Game" >> leagueoflegends.desktop
 	cp leagueoflegends.desktop "$HOME/.local/share/applications/"
 	update-desktop-database "$HOME/.local/share/applications"
 fi
