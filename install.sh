@@ -41,6 +41,9 @@ echo "*************************************************"
 echo "Creating League of Legends shell script"
 echo "*************************************************"
 
+# copy icon to $HOME/.local/share/icons/
+cp $WINEPREFIX/drive_c/ProgramData/Riot\ Games/Metadata/league_of_legends.live/league_of_legends.live.ico $HOME/.local/share/icons/lol.ico
+
 # This is the "user local" BIN-directory for many distributions
 mkdir -p "$HOME/bin"
 
@@ -55,6 +58,22 @@ echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all /opt/wine-lol/bin
 chmod a+x leagueoflegends.sh
 cp leagueoflegends.sh "$HOME/bin/leagueoflegends"
 
+echo "*************************************************"
+echo "Generating League of Legends .desktop file"
+echo "*************************************************"
+
+echo "[Desktop Entry]" > leagueoflegends.desktop
+echo "Encoding=UTF-8" >> leagueoflegends.desktop
+echo "Name=League of Legends" >> leagueoflegends.desktop
+echo "GenericName=League of Legends" >> leagueoflegends.desktop
+echo "Exec=$HOME/bin/leagueoflegends \"\$@\"" >> leagueoflegends.desktop
+echo "Icon=$HOME/.local/share/icons/lol.ico" >> leagueoflegends.desktop
+echo "StartupNotify=true" >> leagueoflegends.desktop
+echo "Terminal=false" >> leagueoflegends.desktop
+echo "Type=Application" >> leagueoflegends.desktop
+echo "Categories=Application;Game" >> leagueoflegends.desktop
+echo "StartupWMClass=leagueclientux.exe" >> leagueoflegends.desktop
+
 
 read -p "Would you like a menu shortcut? y/n" -n 1 -r
 echo    # (optional) move to a new line
@@ -63,7 +82,6 @@ then
 	echo "*************************************************"
 	echo "Creating League of Legends application menu shortcut."
 	echo "*************************************************"
-
 	echo "[Desktop Entry]" > leagueoflegends.desktop
 	echo "Encoding=UTF-8" >> leagueoflegends.desktop
 	echo "Name=League of Legends" >> leagueoflegends.desktop
@@ -74,8 +92,8 @@ then
 	echo "Terminal=false" >> leagueoflegends.desktop
 	echo "Type=Application" >> leagueoflegends.desktop
 	echo "Categories=Application;Game" >> leagueoflegends.desktop
-
-	xdg-desktop-menu instal --novendor leagueoflegends.desktop
+	cp leagueoflegends.desktop "$HOME/.local/share/applications/"
+	update-desktop-database "$HOME/.local/share/applications"
 fi
 
 read -p "Would you like a desktop shortcut? y/n" -n 1 -r
@@ -85,7 +103,8 @@ then
 	echo "*************************************************"
 	echo "Creating League of Legends desktop shortcut."
 	echo "*************************************************"
-	xdg-desktop-icon instal --novendor leagueoflegends.desktop
+	DESKTOP_PATH=$(xdg-user-dir DESKTOP 2>/dev/null || echo "$HOME/Desktop")
+	cp leagueoflegends.desktop "$DESKTOP_PATH"
 fi
 
 

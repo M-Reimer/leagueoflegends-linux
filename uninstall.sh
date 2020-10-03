@@ -16,8 +16,8 @@ xdg-desktop-menu uninstall leagueoflegends.desktop
 echo "*************************************************"
 echo "Removing $HOME/Desktop/leagueoflegends.desktop"
 echo "*************************************************"
-xdg-desktop-icon uninstall leagueoflegends.desktop
-
+DESKTOP_PATH=$(xdg-user-dir DESKTOP 2>/dev/null || echo "$HOME/Desktop")
+rm "$DESKTOP_PATH/leagueoflegends.desktop"
 
 echo "*************************************************"
 echo "Removing $HOME/.wineprefix/LoL"
