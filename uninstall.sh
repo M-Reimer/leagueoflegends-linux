@@ -9,6 +9,11 @@ echo "*************************************************"
 rm $HOME/bin/leagueoflegends
 
 echo "*************************************************"
+echo "Removing $HOME/bin/launchhelper"
+echo "*************************************************"
+rm $HOME/bin/launchhelper
+
+echo "*************************************************"
 echo "Removing $HOME/.local/share/applications/leagueoflegends.desktop"
 echo "*************************************************"
 xdg-desktop-menu uninstall leagueoflegends.desktop
