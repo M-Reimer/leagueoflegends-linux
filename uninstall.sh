@@ -16,7 +16,7 @@ rm $HOME/bin/lol-launchhelper
 echo "*************************************************"
 echo "Removing $HOME/.local/share/applications/leagueoflegends.desktop"
 echo "*************************************************"
-xdg-desktop-menu uninstall leagueoflegends.desktop
+rm $HOME/.local/share/applications/leagueoflegends.desktop
 
 echo "*************************************************"
 echo "Removing $HOME/Desktop/leagueoflegends.desktop"
