@@ -56,7 +56,6 @@ echo "bash $HOME/bin/lol-launchhelper &" >> leagueoflegends.sh
 echo "WINEARCH=win32 WINEPREFIX=\"$WINEPREFIX\" WINEDEBUG=-all /opt/wine-lol/bin/wine \"C:/Riot Games/League of Legends/LeagueClient.exe\"" >> leagueoflegends.sh
 
 chmod a+x leagueoflegends.sh
-chmod a+x lol-launchhelper.sh
 cp leagueoflegends.sh "$HOME/bin/leagueoflegends"
 cp lol-launchhelper.sh "$HOME/bin/lol-launchhelper"
 
@@ -74,6 +73,7 @@ echo "StartupNotify=true" >> leagueoflegends.desktop
 echo "Terminal=false" >> leagueoflegends.desktop
 echo "Type=Application" >> leagueoflegends.desktop
 echo "Categories=Application;Game" >> leagueoflegends.desktop
+echo "StartupWMClass=leagueclientux.exe" >> leagueoflegends.desktop
 
 
 read -p "Would you like a menu shortcut? y/n" -n 1 -r
