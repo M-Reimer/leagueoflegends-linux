@@ -2,7 +2,7 @@
 
 # Find PID
 process=LeagueClientUx.exe
-uxpid=$(timeout 2m sh -c "until pidof ${process}; do sleep 1; done")
+uxpid=$(timeout 2m bash -c "until pidof ${process}; do sleep 1; done")
 if [[ ! -n $uxpid ]]; then
   echo "Could not find process ${process}"
   exit 1
