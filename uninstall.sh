@@ -9,6 +9,11 @@ echo "*************************************************"
 rm $HOME/bin/leagueoflegends
 
 echo "*************************************************"
+echo "Removing $HOME/bin/lol-launchhelper"
+echo "*************************************************"
+rm $HOME/bin/lol-launchhelper
+
+echo "*************************************************"
 echo "Removing $HOME/.local/share/applications/leagueoflegends.desktop"
 echo "*************************************************"
 rm $HOME/.local/share/applications/leagueoflegends.desktop
